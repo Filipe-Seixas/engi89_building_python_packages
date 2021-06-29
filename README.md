@@ -4,7 +4,7 @@
 
 - Step 1: `create an app folder`
 - Step 2: inside app folder`__init__.py` empty
-- Step 3: inside app folder `fizzbuzz.py`
+- Step 3: inside app folder `fizzbuzz.py` and `calculator.py`
 - Step 4: `program.py` on dir level - to use as our run file
 - Step 5: `setup.py` on a dir level - to describe our module details such as version, author, contact details
 
@@ -13,6 +13,7 @@ building_python_packages (directory structure)
 /app
   --> __init__.py
   --> fizzbuzz.py
+  --> calculator.py
 program.py
 setup.py
 ```
@@ -56,11 +57,31 @@ class Fizzbuzz:
             else:
                 self.fizzbuzz_list.append(num)
 ```
+- Code for `calculator.py`
+```python
+class Calculator:
+
+    def Add(self, num1, num2):
+        return num1 + num2
+
+    def Subtract(self, num1, num2):
+        return num1 - num2
+
+    def Multiply(self, num1, num2):
+        return num1 * num2
+
+    def Divide(self, num1, num2):
+        return num1 / num2
+```
 - Code for `program.py`
 ```python
 from app.fizzbuzz import Fizzbuzz
+from app.calculator import Calculator
 
 one_to_100 = Fizzbuzz(1, 100)
 print(one_to_100.fizzbuzz_list)
+
+five_plus_ten = Calculator()
+print(five_plus_ten.Add(5, 10))
 ```
 - `pip install .` to install our package using the `pip` package manager
