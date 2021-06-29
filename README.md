@@ -16,3 +16,51 @@ building_python_packages (directory structure)
 program.py
 setup.py
 ```
+
+- Start building the package starting with `setup.py`
+```python
+from setuptools import setup
+
+# Let's add some information about your package
+setup(name="app")
+version = "1.0"
+description = "Python app"
+author = "Filipe Seixas"
+author_email = "abc@cba.com"
+url = "https://spartaglobal.com"
+```
+- Code for `fizzbuzz.py`
+```python
+class Fizzbuzz:
+
+    def __init__(self, start_of_range, end_of_range):
+        self.fizzrange = range(start_of_range, end_of_range)
+        self.fizzbuzz_list = []
+        self._fizzbuzz_iterator()
+
+    def _divisible_by(self, num1, num2):
+        if num1 % num2 == 0:
+            return True
+        else:
+            return False
+
+    def _fizzbuzz_iterator(self):
+
+        for num in self.fizzrange:
+            if self._divisible_by(num, 15):
+                self.fizzbuzz_list.append("fizzbuzz")
+            elif self._divisible_by(num, 5):
+                self.fizzbuzz_list.append("buzz")
+            elif self._divisible_by(num, 3):
+                self.fizzbuzz_list.append("fizz")
+            else:
+                self.fizzbuzz_list.append(num)
+```
+- Code for `program.py`
+```python
+from app.fizzbuzz import Fizzbuzz
+
+one_to_100 = Fizzbuzz(1, 100)
+print(one_to_100.fizzbuzz_list)
+```
+- `pip install .` to install our package using the `pip` package manager
